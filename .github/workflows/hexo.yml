@@ -30,13 +30,15 @@ jobs:
           hexo g
       - name: Package
         run: |
-          tar -czvf  pubilc.tar  public
+          tar -czvf pubilc.tar public
+          speed 3s
+          mv pubilc.tar $GITHUB_WORKSPACE/
 
       - name: Upload release asset
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: hexo/public.tar
+          file: public.tar
           tag: ${{ github.ref }}
           file_glob: true
           overwrite: true
