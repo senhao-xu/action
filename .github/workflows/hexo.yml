@@ -27,7 +27,6 @@ jobs:
           #cd hexo
           npm install
           hexo g
-          echo $(PWD)
   push-event:
     needs: build-environment
     name: Package-And-Push
