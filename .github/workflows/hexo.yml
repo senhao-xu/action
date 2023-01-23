@@ -13,7 +13,8 @@ jobs:
         with:
           node-version: '16.x'
           registry-url: 'https://registry.npmjs.org'
-      run: |
-        npm -v 
-        npm install -g hexo-cli
-        hexo -v
+      - name: Install Hexo-cli
+        run: |
+          npm -v 
+          npm install -g hexo-cli
+          hexo -v
