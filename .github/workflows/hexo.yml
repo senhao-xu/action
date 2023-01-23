@@ -31,8 +31,8 @@ jobs:
       - name: Package
         run: |
           tar -czvf pubilc.tar public
-          speed 3s
-          mv pubilc.tar $GITHUB_WORKSPACE/
+          mkdir -p $GITHUB_WORKSPACE/release
+          mv pubilc.tar $GITHUB_WORKSPACE/release/
 
       - name: Upload release asset
         uses: svenstaro/upload-release-action@v2
