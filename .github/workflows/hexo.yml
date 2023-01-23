@@ -32,6 +32,8 @@ jobs:
       - name: Package
         run: |
           tar -czvf  pubilc.tar  public
+          ls
+          pwd
 
       - name: Upload release asset
         uses: svenstaro/upload-release-action@v2
