@@ -24,6 +24,6 @@ jobs:
           token: ${{ secrets.PAT }}
       - name: Build
         run: |
-          cd hexo
+          #cd hexo
           npm install
           hexo g  
