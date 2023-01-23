@@ -26,13 +26,17 @@ jobs:
         run: |
           #cd hexo
           npm install
-          hexo g  
+          hexo g
+          echo $(PWD)
   push-event:
     needs: build-environment
     name: Package-And-Push
+    if: always()
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
       - name: Package
         run: |
           tar -czvf  pubilc.tar  public
