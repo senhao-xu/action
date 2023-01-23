@@ -4,7 +4,7 @@ on:
   watch:
     types: started
 jobs:
-  build:
+  build-environment:
     runs-on: ubuntu-latest
     steps:
       # Setup .npmrc file to publish to npm
@@ -27,3 +27,22 @@ jobs:
           #cd hexo
           npm install
           hexo g  
+  push-event:
+    needs: build-environment
+    name: Package-And-Push
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Package
+        run: |
+          tar -czvf  pubilc.tar  public
+
+      - name: Upload release asset
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: ./pubilc.tar
+          tag: ${{env.strDate}}
+          file_glob: true
+          overwrite: true
+          release_name: Hexo Pubilc ${{env.strDate}}
