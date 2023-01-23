@@ -35,8 +35,8 @@ jobs:
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: ./pubilc.tar
-          tag: ${{env.strDate}}
+          file: pubilc.tar
+          tag: test
           file_glob: true
           overwrite: true
           release_name: Hexo Pubilc ${{env.strDate}}
