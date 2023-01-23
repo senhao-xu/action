@@ -7,12 +7,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-        with:
-          ref: master
-          token: ${{ secrets.PAT }}
-      - uses: actions/checkout@v3
       # Setup .npmrc file to publish to npm
       - uses: actions/setup-node@v3
         with:
@@ -23,9 +17,13 @@ jobs:
           npm -v 
           npm install -g hexo-cli
           hexo -v
-      - name: Pull Repository
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          ref: master
+          token: ${{ secrets.PAT }}
+      - name: Build
         run: |
           cd hexo
           npm install
-          hexo g
-          
+          hexo g  
