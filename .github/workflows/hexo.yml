@@ -31,7 +31,6 @@ jobs:
       - name: Package
         run: |
           tar -czvf  pubilc.tar  public
-          mv public.tar $GITHUB_WORKSPACE
 
       - name: Upload release asset
         uses: svenstaro/upload-release-action@v2
