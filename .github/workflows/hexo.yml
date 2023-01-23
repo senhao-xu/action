@@ -4,7 +4,7 @@ on:
   watch:
     types: started
 jobs:
-  build-environment:
+  build:
     runs-on: ubuntu-latest
     steps:
       # Setup .npmrc file to publish to npm
@@ -27,9 +27,6 @@ jobs:
           #cd hexo
           npm install
           hexo g
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 1
       - name: Package
         run: |
           tar -czvf  pubilc.tar  public
