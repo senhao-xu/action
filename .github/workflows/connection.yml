@@ -1,5 +1,8 @@
 name: Ubuntu
-on: [push]
+on:
+  workflow_dispatch:
+  watch:
+    types: started
 jobs:
   Ubuntu:
     runs-on: ubuntu-latest
